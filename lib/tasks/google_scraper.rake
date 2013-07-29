@@ -21,8 +21,9 @@ task :scrape_google => :environment do
       title = job.find('span[itemprop="name title"]').text
       description = job.find('div[itemprop="description"]').text
       department = job.find('div[class="greytext sr-filters"]').text
+      links = job.all('a').first[:href]
       job.all('a[class="source"]').each do |loc|
-        p Job.create(:title => title, :description => description, :location => loc.text, :department => department)
+        p Job.create(:title => title, :description => description, :location => loc.text, :department => department, :links => links)
       end
     end
   end
@@ -41,8 +42,9 @@ desc 'now scraping google San Francisco'
       title = job.find('span[itemprop="name title"]').text
       description = job.find('div[itemprop="description"]').text
       department = job.find('div[class="greytext sr-filters"]').text
+      links = job.all('a').first[:href]
       job.all('a[class="source"]').each do |loc|
-        p Job.create(:title => title, :description => description, :location => loc.text, :department => department)
+        p Job.create(:title => title, :description => description, :location => loc.text, :department => department, :links => links)
       end
     end
   end
@@ -62,8 +64,9 @@ p 'now scraping google San Bruno'
       title = job.find('span[itemprop="name title"]').text
       description = job.find('div[itemprop="description"]').text
       department = job.find('div[class="greytext sr-filters"]').text
+      links = job.all('a').first[:href]
       job.all('a[class="source"]').each do |loc|
-        p Job.create(:title => title, :description => description, :location => loc.text, :department => department)
+        p Job.create(:title => title, :description => description, :location => loc.text, :department => department, :links => links™)
       end
     end
   end
